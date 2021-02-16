@@ -23,11 +23,11 @@ const render = function() {
         const li = document.createElement('li');
         li.classList.add('todo-item');
 
-        li.innerHTML = '<li class="todo-item"><span class="text-todo">' + item.value + '</span>' + 
+        li.innerHTML = '<span class="text-todo">' + item.value + '</span>' + 
             '<div class="todo-buttons">' + 
                 '<button class="todo-remove"></button>' +
                 '<button class="todo-complete"></button>' +
-            '</div></li>';
+            '</div>';
 
         if (item.completed) {
             todoCompleted.append(li);
@@ -63,7 +63,7 @@ todoControl.addEventListener('submit', function(event){
         completed: false,
     };
     
-    if(headerInput.value !== ''){
+    if(headerInput.value.trim() !== ''){
         todoData.push(newTodo);
         localStorage.setItem('value', JSON.stringify(todoData));
         headerInput.value = '';
